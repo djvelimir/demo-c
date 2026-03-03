@@ -1,13 +1,25 @@
 #include <stdio.h>
-#include "util.h"
+#include "leapyear.h"
 
-int main()
+static int get_year(void)
 {
-    showAsciiArt();
+    int year;
+    printf("Please enter a year: ");
+    scanf("%d", &year);
+    return year;
+}
 
-    int year = getYear();
+static void show_message(int year)
+{
+    if (is_leap_year(year))
+        printf("%d is a leap year.\n", year);
+    else
+        printf("%d is not a leap year.\n", year);
+}
 
-    showMessage(year, isLeap(year));
-
+int main(void)
+{
+    int year = get_year();
+    show_message(year);
     return 0;
 }
